@@ -10,21 +10,21 @@
 // *******************************************************
 // Module Imports
 // -------------------------------------------------------
-import * as SECRETS from './secrets';
+// import * as SECRETS from './secrets';
 // --------------------------------
 
 // *******************************************************
 // Implementation
 // -------------------------------------------------------
 const configureBasicAuth = (app) => {
-    if (process.env.APP_ENV !== 'development') {
-        app.use(basicAuth({
-            users: {
-        		[SECRETS.ROOT_USER]: SECRETS.ROOT_PASSWORD
-        	},
-        	challenge: true
-        }));
-    }
+    // if (process.env.APP_ENV !== 'development') {
+    //     app.use(basicAuth({
+    //         users: {
+    //     		[SECRETS.ROOT_USER]: SECRETS.ROOT_PASSWORD
+    //     	},
+    //     	challenge: true
+    //     }));
+    // }
 }
 
 export default configureBasicAuth;

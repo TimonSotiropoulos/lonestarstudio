@@ -3,7 +3,7 @@ import express from "express";
 import session from "express-session";
 import passport from "passport";
 import bodyParser from "body-parser";
-import secrets from "./secrets";
+// import secrets from "./secrets";
 
 const configureExpress = (app) => {
 	// X-Powered-By header has no functional value.
@@ -35,7 +35,8 @@ const configureExpress = (app) => {
 	const sess = {
 		resave: true,
 		saveUninitialized: true,
-		secret: secrets.sessionSecret,
+		// secret: secrets.sessionSecret,
+		secret: "mys2ml3k4m234ln;k2m1;m234km;1m41;m34l",
 		proxy: false,
 		name: "sessionId",
 		cookie: {

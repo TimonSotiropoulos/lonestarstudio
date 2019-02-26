@@ -20,10 +20,10 @@ const app = express()
 // Configure Functions
 // -------------------------------------------------------
 CONFIG.EXPRESS(app);
-CONFIG.DATABASE.MONGO();
+// CONFIG.DATABASE.MONGO();
 CONFIG.CONTROLLERS();
 CONFIG.ROUTES(app);
-CONFIG.BASIC_AUTH(app);
+// CONFIG.BASIC_AUTH(app);
 // -------------------------------------------
 
 // *******************************************************
