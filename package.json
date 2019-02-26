@@ -19,7 +19,7 @@
     "build-client-production": "cd client && APP_ENV=production npm run build",
     "build-client-local": "cd client && APP_LOCATION=local npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-prebuild": "cd ./client && npm install && cd ../server && npm install",
+    "heroku-prebuild": "npm install && cd ./client && npm install && cd ../server && npm install",
     "heroku-postbuild": "npm run build-client-production"
   },
   "repository": {
