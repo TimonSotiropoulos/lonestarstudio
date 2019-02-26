@@ -34,6 +34,7 @@
   "homepage": "https://github.com/TimonSotiropoulos/react-boiler#readme",
   "dependencies": {
     "concurrently": "^3.6.0",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "sass-loader": "^7.1.0"
   }
 }
