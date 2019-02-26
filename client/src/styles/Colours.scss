@@ -20,7 +20,21 @@ $colors: (
     blue: (blue, darkblue),
     green: (green, darkgreen),
     orange: (orange, darkorange),
-    pink: (pink, deeppink)
+    pink: (pink, deeppink),
+    transparentBlack100: (#000000FF, #000000FF),
+    transparentBlack90: (#000000E6, #000000E6),
+    transparentBlack80: (#000000CC, #000000CC),
+    transparentBlack70: (#000000B3, #000000B3),
+    transparentBlack60: (#00000099, #00000099),
+    transparentBlack50: (#00000080, #00000080),
+    transparentBlack40: (#00000066, #00000066),
+    transparentBlack30: (#0000004D, #0000004D),
+    transparentBlack20: (#00000033, #00000033),
+    transparentBlack10: (#0000001A, #0000001A),
+    transparentBlack0: (#00000000, #00000000),
+    white: (#fff, #fff),
+    black: (#000, #000),
+    link: (#4988ed, #3869b7)
 );
 
 :export {

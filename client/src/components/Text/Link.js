@@ -27,9 +27,9 @@ class Link_ extends Component {
         const styleColour = colour || DEFAULT_STYLES.LINK.MOBILE.colour;
         return (
             <Link to={href} style={{cursor: 'pointer', textDecoration: textDecoration}} onClick={this.props.onClick}>
-                <div className={[styleType, styleSize, styleLineHeight, styleLetterSpacing, styleColour, marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight].join(" ")} style={{textDecoration: textDecoration, ...style}}>
+                <span className={[styleType, styleSize, styleLineHeight, styleLetterSpacing, styleColour, marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight].join(" ")} style={{textDecoration: textDecoration, ...style}}>
                     {this.props.children}
-                </div>
+                </span>
             </Link>
         );
     }
@@ -43,9 +43,9 @@ class Link_ extends Component {
         const styleColour = colour || DEFAULT_STYLES.LINK.TABLET.colour;
         return (
             <Link to={href} style={{cursor: 'pointer', textDecoration: textDecoration}}>
-                <div className={[styleType, styleSize, styleLineHeight, styleLetterSpacing, styleColour, marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight].join(" ")} style={{textDecoration: textDecoration, ...style}}>
+                <span className={[styleType, styleSize, styleLineHeight, styleLetterSpacing, styleColour, marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight].join(" ")} style={{textDecoration: textDecoration, ...style}}>
                     {this.props.children}
-                </div>
+                </span>
             </Link>
         );
     }
@@ -59,9 +59,9 @@ class Link_ extends Component {
         const styleColour = colour || DEFAULT_STYLES.LINK.DESKTOP.colour;
         return (
             <Link to={href} style={{cursor: 'pointer', textDecoration: textDecoration}}>
-                <div className={[styleType, styleSize, styleLineHeight, styleLetterSpacing, styleColour, marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight].join(" ")} style={{textDecoration: textDecoration, fontWeight: (bold) ? 'bold' : 'auto', fontStyle: (italic) ? 'italic' : 'auto', ...style}}>
+                <span className={[styleType, styleSize, styleLineHeight, styleLetterSpacing, styleColour, marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight].join(" ")} style={{textDecoration: textDecoration, fontWeight: (bold) ? 'bold' : 'auto', fontStyle: (italic) ? 'italic' : 'auto', ...style}}>
                     {this.props.children}
-                </div>
+                </span>
             </Link>
         );
     }
