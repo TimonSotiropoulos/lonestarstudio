@@ -1,0 +1,28 @@
+---
+- hosts: [app_development, app_staging, app_production]
+  user: ubuntu
+  become: true
+  vars:
+    - homeDir: /root
+    - appDir: app
+    - appEnv: "{{ appEnv }}"
+
+  tasks:
+
+  - name: Killing all running Node Processes on Server {{appEnv}}
+    tags: [npm_stop_development, npm_stop_staging, npm_stop_production]
+    command: '/usr/local/node-v8.9.3-linux-x64/lib/node_modules/forever/bin/forever stop --killSignal=SIGTERM -c "npm run start-{{ appEnv }}" ./'
+    args:
+      chdir: "{{ homeDir }}/{{ appDir }}"
+
+  - name: Killing all running Node Processes on Server {{appEnv}}
+    tags: [npm_stop_development, npm_stop_staging, npm_stop_production, npm_restart_development, npm_restart_staging, npm_restart_production]
+    shell: kill $(ps aux | grep node | grep -v grep | awk '{print $2}')
+    args:
+      chdir: "{{ homeDir }}/{{ appDir }}"
+
+  - name: Starting Forever Node Task And Application on {{appEnv}}
+    tags: [npm_start_development, npm_start_staging, npm_start_production, npm_restart_development, npm_restart_staging, npm_restart_production]
+    command: '/usr/local/node-v8.9.3-linux-x64/lib/node_modules/forever/bin/forever start --killSignal=SIGTERM -c "npm run start-{{ appEnv }}" ./'
+    args:
+      chdir: "{{ homeDir }}/{{ appDir }}"

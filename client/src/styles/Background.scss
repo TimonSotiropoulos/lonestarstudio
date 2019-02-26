@@ -1,0 +1,74 @@
+// *******************************************************
+// Background Generated SCSS File
+// -------------------------------------------------------
+// This file contains the generated scss for setting different
+// Background colors through-out the application.
+//
+// How To Use:
+// Ensure your project has Sass/SCSS modules installed
+// then import this file into your required component.
+// The styles can then be added following the guide below.
+// -------------------------------------------
+
+// *******************************************
+// Style Guide
+// -------------------------------------------
+// Background.white = background-color: #FFFFFF;
+// Background.white_Hover = background-color: #FFFFFF (And hover state)
+// --------------------------------
+
+// *******************************************
+// Child Hover Guide
+// -------------------------------------------
+//
+// You can target a chidl hover background color from a parent element,
+// this can be done by applying the #{color}ChildHover class to the parent
+// element, then applying the .childHoverTarget class to any children
+// classes you want this to effect.
+//
+// EXAMPLE:
+//
+// <div className={[Background.greenHover, Background.whiteChild_Hover].join(" ")}>
+//     <div className={[Background.child_Hover_Target].join(" ")}></div>
+// </div>
+//
+// This will cause the outer div to toggle between the different green hover colors,
+// however it will also cause the inner div to have a white background when the
+// parent is hovered over. This is very useful when trying to create buttons with
+// inverted color schemes when you hover over the parent element
+// --------------------------------
+
+// *******************************************
+// Import Statements
+// -------------------------------------------
+@import "./Colours";
+// --------------------------------
+
+// *******************************************
+// Style Implementation
+// -------------------------------------------
+@each $name, $hexcodes in $colors {
+  .#{$name} {
+      background-color: #{nth($hexcodes, 1)};
+  }
+
+  .#{$name}_Hover {
+      background-color: #{nth($hexcodes, 1)};
+      &:hover {
+          cursor: pointer;
+          background-color: #{nth($hexcodes, 2)};
+      }
+  }
+
+  .#{$name}Child_Hover {
+      .child_Hover_Target {
+          background-color: #{nth($hexcodes, 1)};
+      }
+      &:hover .child_Hover_Target {
+          cursor: pointer;
+          background-color: #{nth($hexcodes, 2)};
+      }
+  }
+
+}
+// --------------------------------

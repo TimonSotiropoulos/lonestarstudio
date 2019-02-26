@@ -1,0 +1,33 @@
+// *******************************************************
+// Colours Style Guide
+// -------------------------------------------------------
+// This file contains the different colours and their names
+// that are used across the application
+//
+// How To Use:
+// Import this file into your required SCSS file and use
+// the map to generate the required styling,
+//
+// First Colour: The base colour
+// Second Colour: The highlight/hover for the base colour
+// -------------------------------------------
+
+// *******************************************
+// Style Implementation
+// -------------------------------------------
+$colors: (
+    red: (red, darkred),
+    blue: (blue, darkblue),
+    green: (green, darkgreen),
+    orange: (orange, darkorange),
+    pink: (pink, deeppink)
+);
+
+:export {
+    red: red;
+    blue: blue;
+    green: green;
+    orange: orange;
+    pink: pink;
+}
+// --------------------------------

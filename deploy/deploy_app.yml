@@ -1,0 +1,66 @@
+---
+- hosts: [app_development, app_staging, app_production]
+  user: ubuntu
+  become: true
+  gather_facts: true
+  vars:
+    - homeDir: /root
+    - appDir: app
+    - repo: "{{ githubRepo }}"
+    - account: "{{ githubAccount }}"
+    - githubDeploymentKey: "{{ githubDeploymentKey }}" #this is the deploy key for github
+    - node_version: "8.9.3"
+    - ubuntuVersion: xenial
+    - gitBranch: "{{ gitBranch }}"
+
+  tasks:
+  - name: Clone Git Repository onto EC2 Server - Cloning Branch - {{ gitBranch }}
+    tags: [development, staging, production]
+    git:
+      repo: "git@github.com:{{account}}/{{repo}}.git"
+      dest: "{{homeDir}}/{{appDir}}"
+      update: yes
+      force: yes
+      accept_hostkey: yes
+      key_file: "{{homeDir}}/{{githubDeploymentKey}}"
+      version: "{{gitBranch}}"
+    register: git_finished
+
+  - name: Running NPM install for Root Application {{homeDir}}/{{appDir}}
+    tags: [development, staging, production]
+    command: "npm install --unsafe-perm"
+    args:
+      chdir: "{{ homeDir }}/{{ appDir }}"
+
+  - name: Running NPM install for Client Application {{homeDir}}/{{appDir}}/client
+    tags: [development, staging, production]
+    command: "npm install --unsafe-perm"
+    args:
+      chdir: "{{ homeDir }}/{{ appDir }}/client"
+
+  - name: Running NPM install for Server Application {{homeDir}}/{{appDir}}/server
+    tags: [development, staging, production]
+    command: "npm install --unsafe-perm"
+    args:
+      chdir: "{{ homeDir }}/{{ appDir }}/server"
+
+  - name: "Copy Production Application to Remote Server"
+    tags: [staging, production]
+    copy:
+      force: yes
+      src: "../client/build"
+      dest: "{{homeDir}}/{{appDir}}/client"
+
+  - name: "Copy Over the Server Configuration File to Remote Server"
+    tags: [development, staging, production]
+    copy:
+      force: yes
+      src: "../server/config/secrets.js"
+      dest: "{{homeDir}}/{{appDir}}/server/config/secrets.js"
+
+  - name: "Copy Over the Client Configuration File to Remote Server"
+    tags: [development, staging, production]
+    copy:
+      force: yes
+      src: "../client/src/config/secrets.js"
+      dest: "{{homeDir}}/{{appDir}}/client/src/config/secrets.js"

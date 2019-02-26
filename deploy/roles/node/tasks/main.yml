@@ -1,0 +1,9 @@
+#Role to install node
+---
+  - name: Check if node is installed
+    shell: type node > /dev/null 2>&1 && echo 1 || echo 0
+    register: node
+  - include: install.yml
+    when: node.stdout == "0"
+  - shell: echo "Node is already installed"
+    when: node.stdout == "1"

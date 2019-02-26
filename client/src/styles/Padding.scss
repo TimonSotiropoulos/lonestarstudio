@@ -1,0 +1,50 @@
+// *******************************************************
+// Padding Generated Style File
+// -------------------------------------------------------
+// This file contains the generated scss for paddings
+// that are used throughout the application
+//
+// How To Use:
+// Ensure your project has Sass/SCSS modules installed
+// then import this file into your required component.
+// The styles can then be added following the guide below.
+// -------------------------------------------
+
+// *******************************************
+// Style Guide
+// -------------------------------------------
+//
+// Inside JS File:
+// import Padding from '../path/to/styles/Padding.scss';
+//
+// Padding._1 = padding: 1px;
+// Padding.Left_1 = padding-left: 1px;
+// Padding.Right_1 = padding-right: 1px;
+// Padding.Top_1 = padding-top: 1px;
+// Padding.Bottom_1 = padding-bottom: 1px;
+// --------------------------------
+
+// *******************************************
+// Style Implementation
+// -------------------------------------------
+@for $number from 0 through 200 {
+    ._#{$number} {
+        padding: #{$number}px;
+    }
+}
+
+@for $number from 0 through 200 {
+    .Left_#{$number} {
+        padding-left: #{$number}px;
+    }
+    .Right_#{$number} {
+        padding-right: #{$number}px;
+    }
+    .Top_#{$number} {
+        padding-top: #{$number}px;
+    }
+    .Bottom_#{$number} {
+        padding-bottom: #{$number}px;
+    }
+}
+// --------------------------------

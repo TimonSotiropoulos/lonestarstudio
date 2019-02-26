@@ -1,0 +1,73 @@
+---
+# We are using Ubuntu 16.04 LTS for our Operating System...
+
+- hosts: [app_development, app_staging, app_production]
+  user: ubuntu
+  become: true
+  gather_facts: true
+  vars:
+    - homeDir: /root
+    - appDir: app
+    - repo: "{{ githubRepo }}"
+    - account: "{{ githubAccount }}"
+    - gitHubDeploymentKey: "{{ githubDeploymentKey }}" #this is the deploy key for github
+    - gitHubDeploymentKeyLocation: "~/.ssh/{{ githubDeploymentKey }}"
+    - node_version: "8.9.3"
+    - ubuntuVersion: xenial
+    - gitBranch: "{{ gitBranch }}"
+
+  roles:
+    - { role: node, tags: "node", version: "{{ node_version | default('8.9.3') }}", download_folder: "/tmp" }
+
+  tasks:
+  - name: Install Packages
+    tags: [server_setup]
+    apt: "name={{item}} state=latest update_cache=yes"
+    with_items:
+      - git
+      - mcrypt
+      - vim
+      - curl
+      - build-essential
+      - tar
+
+  - name: "Install forever (to run Node.js)."
+    tags: [server_setup]
+    command: npm install -g forever
+
+  - name: Create Application Directory
+    tags: [server_setup]
+    file:
+      path: "{{homeDir}}/{{appDir}}"
+      state: directory
+
+  - name: Copy Github Deployment Private Key
+    tags: [server_setup]
+    copy:
+      force: yes
+      src: "{{gitHubDeploymentKeyLocation}}"
+      dest: "{{homeDir}}"
+      mode: 0600
+
+  - name: "Update ip table to go through port 80"
+    tags: [server_setup]
+    command: "iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 443"
+
+  - name: "Then add it to the /etc/rc.local file"
+    tags: [server_setup]
+    lineinfile:
+      path: /etc/rc.local
+      insertbefore: '^exit 0'
+      line: "iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 443"
+
+
+  - name: "Update ip table to go through port 443"
+    tags: [server_setup]
+    command: "iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 5000"
+
+  - name: "Then add it to the /etc/rc.local file"
+    tags: [server_setup]
+    lineinfile:
+      path: /etc/rc.local
+      insertbefore: '^exit 0'
+      line: "iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 5000"

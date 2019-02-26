@@ -1,0 +1,31 @@
+// *******************************************************
+// Margin Generated Style File
+// -------------------------------------------------------
+// This file contains the generated scss for margins
+// that are used throughout the application
+//
+// How To Use:
+// Ensure your project has Sass/SCSS modules installed
+// then import this file into your required component.
+// The styles can then be added following the guide below.
+// -------------------------------------------
+
+// *******************************************
+// Style Guide
+// -------------------------------------------
+//
+// Inside JS File:
+// import Width from '../path/to/styles/Width.scss';
+//
+// Width._1 = width: 1%;
+// --------------------------------
+
+// *******************************************
+// Style Implementation
+// -------------------------------------------
+@for $number from 0 through 100 {
+    ._#{$number} {
+        width: percentage($number / 100);
+    }
+}
+// --------------------------------

@@ -1,0 +1,123 @@
+// *******************************************************
+// Layout Style File
+// -------------------------------------------------------
+// This file contains all the main style classes for the
+// css styling across the application
+// -------------------------------------------
+
+/*
+ * Basic Flex Declarations
+ */
+.container {
+    flex: 1;
+}
+.flexCol {
+    display: flex;
+    flex-direction: column;
+}
+.flexRow {
+    display: flex;
+    flex-direction: row;;
+}
+.flexWrap {
+    flex-wrap: wrap;
+}
+/*
+ * Primary Style Declarations
+ */
+.mainAxisCenter {
+    justify-content: center;
+}
+.mainAxisTop {
+    justify-content: flex-start;
+}
+.mainAxisBottom {
+    justify-content: flex-end;
+}
+.mainAxisAround {
+    justify-content: space-around;
+}
+.mainAxisBetween {
+    justify-content: space-between;
+}
+/*
+ * Secondary Style Declarations
+ */
+.altAxisCenter {
+    align-items: center;
+}
+.altAxisLeft {
+    align-items: flex-start;
+}
+.altAxisRight {
+    align-items: flex-end;
+}
+.altAxisBetween {
+    align-items: stretch;
+}
+/*
+ * Centering on Both Axis
+ */
+.bothAxisCenter {
+    justify-content: center;
+    align-items: center;
+}
+/*
+ * Absolute Positions
+ */
+.absoluteTopLeft {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.absoluteBottomLeft {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.absoluteTopRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.absoluteBottomRight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+/*
+ * Align Self Classes
+ */
+.selfMainAxisCenter {
+    align-self: center;
+}
+.selfStretch {
+    align-self: stretch;
+}
+/*
+ * Text Layout Positions
+ */
+.textCenter {
+    text-align: center;
+}
+.textLeft {
+    text-align: left;
+}
+.textRight {
+    text-align: right;
+}
+/*
+ * Box Sizings
+ */
+.boxSizing_Content {
+    box-sizing: content-box;
+}
+.boxSizing_Border {
+    box-sizing: border-box;
+}
+/*
+ * Display Stylings
+ */
+.inlineBlock {
+    display: inline-block;
+}

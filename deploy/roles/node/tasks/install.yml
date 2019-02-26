@@ -1,0 +1,53 @@
+#install plays for node
+---
+  #keys listed at https://github.com/nodejs/node#release-team
+- name: Add trusted release keys for node
+  shell: gpg --keyserver ha.pool.sks-keyservers.net --recv-keys {{item}}
+  with_items:
+    - 94AE36675C464D64BAFA68DD7434390BDBE9B9C5
+    - FD3A5288F042B6850C66B31F09FE44734EB7990E
+    - 71DCFD284A79C3B38668286BC97EC7A07EDE3FC1
+    - DD8F2338BAE7501E3DD5AC78C273792F7D83545D
+    - C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8
+    - B9AE9905FFD7803F25714661B63B535A4C206CA9
+    - 56730D5401028683275BD23C23EFEFE93C4CFFFE
+    - 77984A986EBC2AA786BC0F66B01FBB92821C587A
+
+- name: Ensure that download directory {{download_folder}} exists
+  file: path={{download_folder}} state=directory
+
+- name: "Download Node {{ version }} dist archive"
+  get_url: url=https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-linux-x64.tar.gz dest={{ download_folder }}
+
+- name: "Download Node {{ version }} SHA checksums file"
+  get_url: url=https://nodejs.org/dist/v{{ version }}/SHASUMS256.txt.asc dest={{ download_folder }}
+
+- name: verify the download checksums
+  shell: gpg --verify {{ download_folder }}/SHASUMS256.txt.asc
+  register: verify_checksum
+
+- name: unarchive node the archive
+  unarchive: src='{{ download_folder }}/node-v{{ version }}-linux-x64.tar.gz' dest='/usr/local' copy=no
+
+- name: create symbolic link for node
+  file: src=/usr/local/node-v{{ version }}-linux-x64 dest={{node_path}}  state=link
+
+- name: add node bin to envrionment variables path
+  lineinfile: >
+    dest=/etc/environment
+    state=present
+    backrefs=yes
+    regexp='PATH=(["]*)((?!.*?{{node_path}}/bin).*?)(["]*)$'
+    line="PATH=\1\2:{{node_path}}/bin\3"
+
+- name: link to the executables to the bin folder
+  file: src={{node_path}}/bin/{{ item }} dest=/usr/local/bin/{{ item }}  state=link
+  with_items:
+    - node
+    - npm
+
+- name: Delete the downloaded files
+  file: path={{item}} state=absent
+  with_items:
+    - "{{ download_folder }}/node-v{{ version }}-linux-x64.tar.gz"
+    - "{{ download_folder }}/SHASUMS256.txt.asc"

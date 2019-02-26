@@ -1,0 +1,5 @@
+[app_staging]
+# Replace with ip address for Ec2 Instance (eg 52.12.31.31)
+
+[app_staging:vars]
+ansible_python_interpreter=/usr/bin/python3

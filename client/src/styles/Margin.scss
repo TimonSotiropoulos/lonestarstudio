@@ -1,0 +1,54 @@
+// *******************************************************
+// Margin Generated Style File
+// -------------------------------------------------------
+// This file contains the generated scss for margins
+// that are used throughout the application
+//
+// How To Use:
+// Ensure your project has Sass/SCSS modules installed
+// then import this file into your required component.
+// The styles can then be added following the guide below.
+// -------------------------------------------
+
+// *******************************************
+// Style Guide
+// -------------------------------------------
+//
+// Inside JS File:
+// import Margin from '../path/to/styles/Margin.scss';
+//
+// Margin._1 = margin: 1px;
+// Margin.Left_1 = margin-left: 1px;
+// Margin.Right_1 = margin-right: 1px;
+// Margin.Top_1 = margin-top: 1px;
+// Margin.Bottom_1 = margin-bottom: 1px;
+// --------------------------------
+
+// *******************************************
+// Style Implementation
+// -------------------------------------------
+.center {
+    margin: 0 auto;
+}
+
+@for $number from 0 through 100 {
+    ._#{$number} {
+        margin: #{$number}px;
+    }
+}
+
+@for $number from 0 through 100 {
+    .Left_#{$number} {
+        margin-left: #{$number}px;
+    }
+    .Right_#{$number} {
+        margin-right: #{$number}px;
+    }
+    .Top_#{$number} {
+        margin-top: #{$number}px;
+    }
+    .Bottom_#{$number} {
+        margin-bottom: #{$number}px;
+    }
+}
+// --------------------------------

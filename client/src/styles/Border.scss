@@ -1,0 +1,129 @@
+// *******************************************************
+// Border Generated Style File
+// -------------------------------------------------------
+// This file contains the generated scss for borders
+// that are used throughout the application
+//
+// How To Use:
+// Ensure your project has Sass/SCSS modules installed
+// then import this file into your required component.
+// The styles can then be added following the guide below.
+// -------------------------------------------
+
+// *******************************************
+// Style Guide
+// -------------------------------------------
+//
+// Inside JS File:
+// import Border from '../path/to/styles/Border.scss';
+//
+// Border.Width_1 = border-width: 1px;
+// Border.Radius_1 = border-radius: 1px;
+// Border.Width_Top_1 = border-width-top: 1px;
+// Border.Radius_Top_Left_1 = border-top-left-radius: 1px;
+// --------------------------------
+
+// *******************************************
+// Import Statements
+// -------------------------------------------
+@import "./Colours";
+// --------------------------------
+
+// *******************************************
+// Style Implementation
+// -------------------------------------------
+@for $number from 0 through 100 {
+    .Width_#{$number} {
+        border-style: solid;
+        border-width: #{$number}px;
+    }
+    .Radius_#{$number} {
+        border-radius: #{$number}px;
+    }
+}
+
+@each $name, $hexcodes in $colors {
+    .Color_#{$name} {
+        border-color: #{nth($hexcodes, 1)};
+    }
+
+    .Color_#{$name}_Hover {
+        border-color: #{nth($hexcodes, 1)};
+        &:hover {
+            border-color: #{nth($hexcodes, 2)};
+        }
+    }
+
+    .Left_Colour_#{$name}_Hover {
+        border-left-color: #{nth($hexcodes, 1)};
+        &:hover {
+            border-left-color: #{nth($hexcodes, 2)};
+        }
+    }
+
+    .#{$name}Child_Hover {
+        .child_Left_Hover_Target {
+            border-left-color: #{nth($hexcodes, 1)};
+        }
+        &:hover .child_Left_Hover_Target {
+            cursor: pointer;
+            border-left-color: #{nth($hexcodes, 2)};
+        }
+
+        .child_Right_Hover_Target {
+            border-right-color: #{nth($hexcodes, 1)};
+        }
+        &:hover .child_Right_Hover_Target {
+            cursor: pointer;
+            border-right-color: #{nth($hexcodes, 2)};
+        }
+
+        .child_Top_Hover_Target {
+            border-top-color: #{nth($hexcodes, 1)};
+        }
+        &:hover .child_Top_Hover_Target {
+            cursor: pointer;
+            border-top-color: #{nth($hexcodes, 2)};
+        }
+
+        .child_Bottom_Hover_Target {
+            border-bottom-color: #{nth($hexcodes, 1)};
+        }
+        &:hover .child_Bottom_Hover_Target {
+            cursor: pointer;
+            border-bottom-color: #{nth($hexcodes, 2)};
+        }
+    }
+}
+
+@for $number from 0 through 100 {
+    .Width_Top_#{$number} {
+        border-top-style: solid;
+        border-top-width: #{$number}px;
+    }
+    .Width_Bottom_#{$number} {
+        border-bottom-style: solid;
+        border-bottom-width: #{$number}px;
+    }
+    .Width_Left_#{$number} {
+        border-left-style: solid;
+        border-left-width: #{$number}px;
+    }
+    .Width_Right_#{$number} {
+        border-right-style: solid;
+        border-right-width: #{$number}px;
+    }
+    .RadiusTopLeft_#{$number} {
+        border-top-left-radius: #{$number}px;
+    }
+    .RadiusTopRight_#{$number} {
+        border-top-right-radius: #{$number}px;
+    }
+    .RadiusBottomLeft_#{$number} {
+        border-bottom-left-radius: #{$number}px;
+    }
+    .RadiusBottomRight_#{$number} {
+        border-bottom-right-radius: #{$number}px;
+    }
+}
+// --------------------------------

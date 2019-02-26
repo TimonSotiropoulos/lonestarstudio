@@ -1,0 +1,26 @@
+// *******************************************************
+// Box Shadow SCSS FIle
+// -------------------------------------------------------
+// This file contains the generated scss for box shadows
+// that are used throughout the application
+//
+// How To Use:
+// Ensure your project has Sass/SCSS modules installed
+// then import this file into your required component.
+// -------------------------------------------
+
+// *******************************************
+// Style Implementation
+// -------------------------------------------
+.normal {
+    box-shadow: 0px 0px 10px rgba(220, 220, 220, 0.8);
+}
+
+.heavy {
+    box-shadow: 0px 0px 30px rgba(50, 50, 50, 0.5);
+}
+
+.navigation {
+    box-shadow: 0px 0px 10px rgba(220, 220, 220, 0.8);
+}
+// --------------------------------

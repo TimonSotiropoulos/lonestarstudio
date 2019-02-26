@@ -1,0 +1,37 @@
+{
+  "name": "react-boiler",
+  "version": "0.0.1",
+  "description": "Client/Server Side Node React Application Template",
+  "scripts": {
+    "build": "cd client && npm run build",
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "start-development": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "start-development-local": "concurrently \"npm run start-server-local\" \"npm run start-client\"",
+    "start-staging": "cd server && npm run start-staging",
+    "start-staging-local": "cd server && npm run start-staging-local",
+    "start-production": "cd server && npm run start-production",
+    "start-production-local": "cd server && npm run start-production-local",
+    "start-server": "cd server && npm start",
+    "start-server-local": "cd server && npm start-development-local",
+    "start-client": "cd client && npm start",
+    "build-client": "cd client && npm run build",
+    "build-client-staging": "cd client && APP_ENV=staging npm run build",
+    "build-client-production": "cd client && APP_ENV=production npm run build",
+    "build-client-local": "cd client && APP_LOCATION=local npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimonSotiropoulos/react-boiler.git"
+  },
+  "author": "Timon Sotiropoulos <timon.sotiropoulos@gmail.com> (https://github.com/TimonSotiropoulos)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TimonSotiropoulos/react-boiler/issues"
+  },
+  "homepage": "https://github.com/TimonSotiropoulos/react-boiler#readme",
+  "dependencies": {
+    "concurrently": "^3.6.0",
+    "moment": "^2.24.0"
+  }
+}
